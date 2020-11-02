@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         margin: 5,
       },
       btn: {
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         padding: 9,
         margin: 5,
       },
