@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
-import {View,StyleSheet,Text,FlatList} from 'react-native'
+import {View,StyleSheet,Alert,FlatList} from 'react-native'
 import Header from './components/Header'
 import ListItem from './components/ListItem'
+import AddItem from './components/AddItem'
 import { v4 as uuidv4 } from 'uuid';
 
 const App = () => {
@@ -32,9 +33,21 @@ const App = () => {
     });
   };
 
+  const addItem = (text) => {
+    if(!text){
+      Alert.alert('Error','Please enter an item')
+    }else{
+      
+      setItems(prevItems => {
+        return [{id:uuidv4(), text:text },...prevItems];
+      });
+    }
+  }
+
   return (
     <View style={styles.container}>
     <Header title="Shopping List"/>
+    <AddItem addItem={addItem} />
     <FlatList data={items}
     renderItem={({item}) => (
       <ListItem item={item} deleteItem={deleteItem}/>
